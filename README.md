@@ -8,4 +8,4 @@ Rushes: Rush00, Rush01, Rush02
 
 BSQ: Suspenso
 
-Cosas que he hecho como estudiante: ?
+Cosas que he hecho como estudiante: Ya lo veremos si entro

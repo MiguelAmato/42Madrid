@@ -1,50 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 13:22:33 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/05 21:19:03 by amato            ###   ########.fr       */
+/*   Created: 2023/09/05 21:23:38 by amato             #+#    #+#             */
+/*   Updated: 2023/09/05 21:34:12 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+int	ft_atoi(const char *nptr)
 {
-	char	*dup;
-	char	*cpy;
-	int		size;
+	int	i;
+	int	n;
+	int	neg;
 
-	size = 0;
-	while (*src)
+	n = 0;
+	i = 0;
+	while (nptr[i] == ' ' || nptr[i] == '\t')
+		++i;
+	if (nptr[i] == '+' || nptr[i] == '-')
 	{
-		++size;
-		++src;
+		if (nptr[i] == '-')
+			neg = 1;
+		++i;
 	}
-	src -= size;
-	dup = malloc(sizeof(char) * size);
-	cpy = dup;
-	if (dup == 0)
-		return (0);
-	while (*src)
+	while (ft_isdigit(nptr[i]))
 	{
-		*dup = *src;
-		++dup;
-		++src;
+		n *= 10;
+		n += (nptr[i] - '0');
+		++i;
 	}
-	*dup = '\0';
-	return (cpy);
+	if (neg)
+		n = -n;
+	return (n);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *src = "Hola que tal";
-	char *dup = ft_strdup(src);
-	printf("%s", dup);
-}
-*/

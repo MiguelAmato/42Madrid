@@ -1,50 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 13:22:33 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/05 21:19:03 by amato            ###   ########.fr       */
+/*   Created: 2023/09/05 21:57:23 by amato             #+#    #+#             */
+/*   Updated: 2023/09/05 21:59:45 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strrchr(const char *s, int c)
 {
-	char	*dup;
-	char	*cpy;
-	int		size;
+	char	*last;
 
-	size = 0;
-	while (*src)
+	last = 0;
+	while (*s)
 	{
-		++size;
-		++src;
+		if (*s == c)
+			last = s;
+		++s;
 	}
-	src -= size;
-	dup = malloc(sizeof(char) * size);
-	cpy = dup;
-	if (dup == 0)
-		return (0);
-	while (*src)
-	{
-		*dup = *src;
-		++dup;
-		++src;
-	}
-	*dup = '\0';
-	return (cpy);
+	return (last);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *src = "Hola que tal";
-	char *dup = ft_strdup(src);
-	printf("%s", dup);
-}
-*/

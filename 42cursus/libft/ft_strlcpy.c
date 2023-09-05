@@ -1,50 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 13:22:33 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/05 21:19:03 by amato            ###   ########.fr       */
+/*   Created: 2023/09/05 19:45:37 by amato             #+#    #+#             */
+/*   Updated: 2023/09/05 21:14:07 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	char	*dup;
-	char	*cpy;
-	int		size;
+	size_t	cont;
+	char	*dst_c;
 
-	size = 0;
-	while (*src)
+	dst_c = dst;
+	cont = 0;
+	if (size > 0)
 	{
-		++size;
+		while (*src != '\0' && cont < size - 1)
+		{
+			*dst_c = *src;
+			++dst_c;
+			++src;
+			++cont;
+		}
+	}
+	*dst_c = '\0';
+	while (*src != '\0')
+	{
+		++cont;
 		++src;
 	}
-	src -= size;
-	dup = malloc(sizeof(char) * size);
-	cpy = dup;
-	if (dup == 0)
-		return (0);
-	while (*src)
-	{
-		*dup = *src;
-		++dup;
-		++src;
-	}
-	*dup = '\0';
-	return (cpy);
+	return (cont);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *src = "Hola que tal";
-	char *dup = ft_strdup(src);
-	printf("%s", dup);
-}
-*/

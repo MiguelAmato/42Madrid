@@ -5,46 +5,30 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 13:22:33 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/05 21:19:03 by amato            ###   ########.fr       */
+/*   Created: 2023/09/05 21:19:47 by amato             #+#    #+#             */
+/*   Updated: 2023/09/05 21:22:17 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-char	*ft_strdup(char *src)
+char	*ft_strdup(const char *s)
 {
-	char	*dup;
-	char	*cpy;
-	int		size;
+	char		*dup;
+	char		*cpy;
+	size_t		size;
 
-	size = 0;
-	while (*src)
-	{
-		++size;
-		++src;
-	}
-	src -= size;
+	size = ft_strlen(s);
 	dup = malloc(sizeof(char) * size);
 	cpy = dup;
 	if (dup == 0)
 		return (0);
-	while (*src)
+	while (*s)
 	{
-		*dup = *src;
+		*dup = *s;
 		++dup;
-		++src;
+		++s;
 	}
 	*dup = '\0';
 	return (cpy);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	char *src = "Hola que tal";
-	char *dup = ft_strdup(src);
-	printf("%s", dup);
-}
-*/

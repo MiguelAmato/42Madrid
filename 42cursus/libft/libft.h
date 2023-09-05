@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:01:41 by amato             #+#    #+#             */
-/*   Updated: 2023/09/05 21:57:09 by amato            ###   ########.fr       */
+/*   Updated: 2023/09/05 22:12:06 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		ft_tolower(int c);
 
 char	*ft_strchr(const char *s, int c);
 
-// No hecha
 char	*ft_strrchr(const char *s, int c);
 
 // No hecha

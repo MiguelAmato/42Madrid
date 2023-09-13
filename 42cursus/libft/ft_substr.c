@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 18:26:56 by amato             #+#    #+#             */
-/*   Updated: 2023/09/05 18:32:45 by amato            ###   ########.fr       */
+/*   Created: 2023/09/13 17:24:28 by mamato-h          #+#    #+#             */
+/*   Updated: 2023/09/13 17:30:47 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <ctype.h>
 #include "libft.h"
 
-int	main(void)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	int	n;
-	int	m;
+	char	*ret;
+	int		i;
 
-	n = isprint(126);
-	m = ft_isprint(126);
-	printf("(Prueba: %d || Mio: %d)\n", n, m);
+	ret = malloc((len - start + 2) * sizeof(char));
+	if (!ret)
+		return (0);
+	i = 0;
+	while (start <= len)
+		ret[i++] = s[start++];
+	return (ret);
 }

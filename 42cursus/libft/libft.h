@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:01:41 by amato             #+#    #+#             */
-/*   Updated: 2023/09/12 11:50:34 by amato            ###   ########.fr       */
+/*   Updated: 2023/09/13 21:33:02 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+
+/*
+typedef struct s_list
+{
+	void	*content;
+	t_list	*next;
+}	t_list;
+*/
 
 /*
 ** Primera bateria de funciones
@@ -55,13 +63,13 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	*ft_memchr(const void *s, int c, size_t n);
 
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n); // MAL
 
-char	*ft_strnstr(const char *big, const char *little, size_t len);
+char	*ft_strnstr(const char *big, const char *little, size_t len); // MAL
 
-int		ft_atoi(const char *nptr);
+int		ft_atoi(const char *nptr); // MAL
 
-void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_calloc(size_t nmemb, size_t size); // MAL
 
 char	*ft_strdup(const char *s);
 
@@ -69,24 +77,19 @@ char	*ft_strdup(const char *s);
 ** Segunda bateria de funciones
 */
 
-// No hecha
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_substr(char const *s, unsigned int start, size_t len); // MAL
 
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char const *s1, char const *s2); // MAL
 
-// No hecha
-char	*ft_strtrim(char const *s1, char const *set);
+char	*ft_strtrim(char const *s1, char const *set); // MAL
 
-// No hecha
-char	**ft_split(char const *s, char c);
+char	**ft_split(char const *s, char c); // MAL
 
-char	*ft_itoa(int n);
+char	*ft_itoa(int n); // MAL
 
-// No hecha
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char)); // MAL
 
-// No hecha
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*)); // MAL
 
 void	ft_putchar_fd(char c, int fd);
 
@@ -94,18 +97,13 @@ void	ft_putstr_fd(char *s, int fd);
 
 void	ft_putendl_fd(char *s, int fd);
 
-void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr_fd(int n, int fd); // MAL
 
 /*
 ** Parte bonus
 */
 
-typedef struct s_list
-{
-	void	*content;
-	t_list	*next;
-} t_list;
-
+/*
 // No hecha
 t_list	*ft_lstnew(void *content);
 
@@ -132,5 +130,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 // No hecha
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+*/
 
 #endif

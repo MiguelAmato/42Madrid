@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:11:32 by amato             #+#    #+#             */
-/*   Updated: 2023/09/12 11:50:00 by amato            ###   ########.fr       */
+/*   Updated: 2023/09/13 16:51:19 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int ft_size_num(int n)
+static int	ft_size_num(int n)
 {
 	int	cont;
 
@@ -45,7 +45,7 @@ static void	ft_strrev(char *str)
 	}
 }
 
-void abs_aux(int *neg, int *n)
+void	abs_aux(int *neg, int *n)
 {
 	*neg = 0;
 	if (*n < 0)
@@ -68,6 +68,8 @@ char	*ft_itoa(int n)
 	}
 	abs_aux(&neg, &n);
 	ret = malloc((ft_size_num(n) + neg + 1) * sizeof(char));
+	if (!ret)
+		return (0);
 	i = 0;
 	while (n > 9)
 	{

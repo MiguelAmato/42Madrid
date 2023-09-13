@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 21:19:47 by amato             #+#    #+#             */
-/*   Updated: 2023/09/12 11:14:42 by amato            ###   ########.fr       */
+/*   Created: 2023/09/12 09:29:40 by amato             #+#    #+#             */
+/*   Updated: 2023/09/12 09:47:44 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char		*dup;
-	char		*cpy;
-	size_t		size;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
-	size = ft_strlen(s);
-	dup = malloc(sizeof(char) * size + 1);
-	cpy = dup;
-	if (dup == 0)
-		return (0);
-	while (*s)
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
+	if (s <= d)
 	{
-		*dup = *s;
-		++dup;
-		++s;
+		i = 0;
+		while (i < n)
+		{
+			d[i] == s[i];
+			++i;
+		}
 	}
-	*dup = '\0';
-	return (cpy);
+	else
+	{
+		i = n - 1;
+		while (i >= 0)
+		{
+			d[i] == s[i];
+			--i;
+		}
+	}
+	return (dest);
 }

@@ -1,34 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 21:19:47 by amato             #+#    #+#             */
-/*   Updated: 2023/09/12 11:14:42 by amato            ###   ########.fr       */
+/*   Created: 2023/09/12 09:27:26 by amato             #+#    #+#             */
+/*   Updated: 2023/09/12 09:27:42 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char		*dup;
-	char		*cpy;
-	size_t		size;
+	int i;
+	int cont;
 
-	size = ft_strlen(s);
-	dup = malloc(sizeof(char) * size + 1);
-	cpy = dup;
-	if (dup == 0)
-		return (0);
-	while (*s)
+	if (!little)
+		return big;
+	i = 0;
+	cont = 0;
+	while (i < len && big[i])
 	{
-		*dup = *s;
-		++dup;
-		++s;
+		if (big[i] == little[cont])
+		{
+			cont++;
+			if (!little[cont])
+				return (big + i - cont + 1);
+		}
+		else
+			cont = 0;
+		i++;
 	}
-	*dup = '\0';
-	return (cpy);
+	return (0);
 }

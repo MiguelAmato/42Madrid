@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 21:19:47 by amato             #+#    #+#             */
-/*   Updated: 2023/09/12 11:14:42 by amato            ###   ########.fr       */
+/*   Created: 2023/09/12 09:24:31 by amato             #+#    #+#             */
+/*   Updated: 2023/09/12 09:25:11 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char		*dup;
-	char		*cpy;
-	size_t		size;
+	unsigned char *cpy1;
+	unsigned char *cpy2;
+	int i;
 
-	size = ft_strlen(s);
-	dup = malloc(sizeof(char) * size + 1);
-	cpy = dup;
-	if (dup == 0)
+	if (n == 0)
 		return (0);
-	while (*s)
+	i = 0;
+	cpy1 = (unsigned char *)s1;
+	cpy2 = (unsigned char *)s2;
+	while (i < n && cpy1[i] && cpy2[i])
 	{
-		*dup = *s;
-		++dup;
-		++s;
+		if (cpy1[i] != cpy2[i])
+			break ;
+		++i;
 	}
-	*dup = '\0';
-	return (cpy);
+	return (cpy1[i] - cpy2[i]);
 }

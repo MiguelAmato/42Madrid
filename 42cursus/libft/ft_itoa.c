@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 11:11:32 by amato             #+#    #+#             */
-/*   Updated: 2023/09/13 16:51:19 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:07:16 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static void	ft_strrev(char *str)
 	while (i < size / 2)
 	{
 		aux = str[i];
-		str[j] = str[i];
-		str[i] = aux;
+		str[i] = str[j];
+		str[j] = aux;
 		++i;
 		--j;
 	}

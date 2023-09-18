@@ -3,14 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 21:23:38 by amato             #+#    #+#             */
-/*   Updated: 2023/09/13 16:15:36 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/18 11:08:44 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_isspace(char c)
+{
+	return ((c >= '\t' && c <= '\r') || c == ' ');
+}
 
 int	ft_atoi(const char *nptr)
 {
@@ -20,12 +25,13 @@ int	ft_atoi(const char *nptr)
 
 	n = 0;
 	i = 0;
-	while (nptr[i] == ' ' || nptr[i] == '\t')
+	neg = 1;
+	while (ft_isspace(nptr[i]))
 		++i;
 	if (nptr[i] == '+' || nptr[i] == '-')
 	{
 		if (nptr[i] == '-')
-			neg = 1;
+			neg = -1;
 		++i;
 	}
 	while (ft_isdigit(nptr[i]))
@@ -34,7 +40,5 @@ int	ft_atoi(const char *nptr)
 		n += (nptr[i] - '0');
 		++i;
 	}
-	if (neg)
-		n = -n;
-	return (n);
+	return (n * neg);
 }

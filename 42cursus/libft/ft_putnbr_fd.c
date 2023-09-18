@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:36:32 by amato             #+#    #+#             */
-/*   Updated: 2023/09/13 16:14:22 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/18 10:36:05 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,9 @@ void	ft_putnbr_fd(int n, int fd)
 			n = -n;
 			ft_putnbr_fd(n, fd);
 		}
-		else if (n > 9)
+		else if (n <= 9)
+			ft_putchar_fd((char)(n + '0'), fd);
+		else
 		{
 			c = (n % 10) + '0';
 			ft_putnbr_fd(n / 10, fd);

@@ -6,7 +6,7 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:08:14 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/13 16:59:15 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/20 19:18:48 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	count_words(char const *s, char c)
 	int	sep;
 	int	i;
 
+	sep = 1;
 	count = 0;
 	i = 0;
 	while (s[i])
@@ -34,44 +35,65 @@ static int	count_words(char const *s, char c)
 	return (count);
 }
 
-static int	word_size(char const *s, char c, int i)
+static int	word_size(char const *s, char c)
 {
 	int	count;
 
 	count = 0;
-	while (s[i] && s[i] != c)
+	while (*s && *s != c)
 	{
 		++count;
-		++i;
+		++s;
 	}
 	return (count);
+}
+
+int		ft_malloc(char **ret, int count, char const *s, char c)
+{
+	int	i;
+
+	i = 0;
+	ret[count] = malloc((word_size(s, c) + 1) * sizeof(char));
+	if (!ret[count])
+	{
+		while (ret[i])
+		{
+			free(ret[i]);
+			++i;
+		}
+		free(ret);
+		return (1);
+	}
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
 	char	**ret;
 	int		size;
-	int		i;
 	int		j;
 	int		count;
 
 	size = count_words(s, c);
-	ret = malloc((size + 1) * sizeof(char));
-	i = 0;
-	while (s[i] && s[i] == c)
-		++i;
+	ret = malloc((size + 1) * sizeof(char *));
+	if (!ret)
+		return (0);
 	count = 0;
-	while (s[i] && count < size)
+	while (count < size)
 	{
-		ret[count] = malloc((word_size(s, c, i) + 1) * sizeof(char));
 		j = 0;
-		while (s[i] && s[i] != c)
-			ret[count][j++] = s[i++];
-		ret[count][j] = '\0';
-		while (s[i] && s[i] == c)
-			++i;
-		++count;
+		while (*s && *s == c)
+			++s;
+		if (ft_malloc(ret, count, s, c))
+			return (0);
+		while (*s && *s != c){
+			ret[count][j++] = *s;
+			++s;
+		}
+		ret[count++][j] = '\0';
 	}
-	ret[count] = 0;
+	ret[size] = 0;
 	return (ret);
 }
+
+

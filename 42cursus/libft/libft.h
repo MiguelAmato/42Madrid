@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:01:41 by amato             #+#    #+#             */
-/*   Updated: 2023/09/18 11:46:58 by amato            ###   ########.fr       */
+/*   Updated: 2023/09/20 15:59:59 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/*
 typedef struct s_list
 {
 	void	*content;
 	t_list	*next;
 }	t_list;
+*/
 
 /*
 ** Primera bateria de funciones
@@ -101,7 +103,7 @@ void	ft_putnbr_fd(int n, int fd);
 ** Parte bonus
 */
 
-
+/*
 // No hecha
 t_list	*ft_lstnew(void *content);
 
@@ -128,6 +130,6 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 // No hecha
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
+*/
 
 #endif

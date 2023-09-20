@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:01:41 by amato             #+#    #+#             */
-/*   Updated: 2023/09/20 20:02:07 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/20 23:35:39 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-
 typedef struct s_list
 {
-	void	*content;
-	t_list	*next;
+	void			*content;
+	struct s_list	*next;
 }	t_list;
-
 
 /*
 ** Primera bateria de funciones
@@ -102,7 +100,6 @@ void	ft_putnbr_fd(int n, int fd);
 /*
 ** Parte bonus
 */
-
 
 t_list	*ft_lstnew(void *content);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 18:08:14 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/20 19:18:48 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/21 00:01:17 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int	word_size(char const *s, char c)
 	return (count);
 }
 
-int		ft_malloc(char **ret, int count, char const *s, char c)
+int	ft_malloc(char **ret, int count, char const *s, char c)
 {
 	int	i;
 
@@ -65,6 +65,12 @@ int		ft_malloc(char **ret, int count, char const *s, char c)
 		return (1);
 	}
 	return (0);
+}
+
+static char	**ft_return(char **ret, int size)
+{
+	ret[size] = 0;
+	return (ret);
 }
 
 char	**ft_split(char const *s, char c)
@@ -86,14 +92,12 @@ char	**ft_split(char const *s, char c)
 			++s;
 		if (ft_malloc(ret, count, s, c))
 			return (0);
-		while (*s && *s != c){
+		while (*s && *s != c)
+		{
 			ret[count][j++] = *s;
 			++s;
 		}
 		ret[count++][j] = '\0';
 	}
-	ret[size] = 0;
-	return (ret);
+	return (ft_return(ret, size));
 }
-
-

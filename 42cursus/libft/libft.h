@@ -6,7 +6,7 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 18:01:41 by amato             #+#    #+#             */
-/*   Updated: 2023/09/20 15:59:59 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/20 20:02:07 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/*
+
 typedef struct s_list
 {
 	void	*content;
 	t_list	*next;
 }	t_list;
-*/
+
 
 /*
 ** Primera bateria de funciones
@@ -103,33 +103,23 @@ void	ft_putnbr_fd(int n, int fd);
 ** Parte bonus
 */
 
-/*
-// No hecha
+
 t_list	*ft_lstnew(void *content);
 
-// No hecha
 void	ft_lstadd_front(t_list **lst, t_list *new);
 
-// No hecha
 int		ft_lstsize(t_list *lst);
 
-// No hecha
 t_list	*ft_lstlast(t_list *lst);
 
-// No hecha
 void	ft_lstadd_back(t_list **lst, t_list *new);
 
-// No hecha
 void	ft_lstdelone(t_list *lst, void (*del)(void *));
 
-// No hecha
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 
-// No hecha
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
-// No hecha
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-*/
 
 #endif

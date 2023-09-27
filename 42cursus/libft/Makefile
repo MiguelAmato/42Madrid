@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: amato <amato@student.42.fr>                +#+  +:+       +#+         #
+#    By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/05 18:00:55 by amato             #+#    #+#              #
-#    Updated: 2023/09/21 00:21:44 by amato            ###   ########.fr        #
+#    Updated: 2023/09/27 15:44:07 by mamato-h         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,21 +21,39 @@ SRC = ft_isalnum.c ft_isprint.c ft_memcmp.c  ft_putchar_fd.c ft_split.c \
 			
 OBJS = $(SRC:.c=.o)
 
+SRC_BONUS = ft_lstnew_bonus.c ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \
+			ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
+			ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstsize_bonus.c
+
+OBJS_BONUS = $(SRC_BONUS:.c=.o)
+
+BONUS_RELINK = .bonus
+
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+AR = ar
+RC = rc
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rc $@ $(OBJS)
+	$(AR) $(RC) $@ $(OBJS)
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
+bonus: $(BONUS_RELINK)
+
+$(BONUS_RELINK): $(NAME) $(OBJS) $(OBJS_BONUS)
+	$(AR) $(RC) $(NAME) $(OBJS) $(OBJS_BONUS)
+	touch $(BONUS_RELINK)
+
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(OBJS_BONUS) $(BONUS_RELINK)
 
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: clean fclean re

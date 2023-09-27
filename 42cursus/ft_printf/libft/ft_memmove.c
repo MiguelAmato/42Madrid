@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 09:21:57 by amato             #+#    #+#             */
-/*   Updated: 2023/09/27 17:58:26 by mamato-h         ###   ########.fr       */
+/*   Created: 2023/09/12 09:29:40 by amato             #+#    #+#             */
+/*   Updated: 2023/09/13 20:22:04 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	void	*ptr;
+	size_t			i;
 
-	if (nmemb == 0 || size == 0)
-		return (malloc(1));
-	if (nmemb == SIZE_MAX || size == SIZE_MAX)
+	if (!dest && !src)
 		return (0);
-	ptr = malloc(nmemb * size);
-	if (!ptr)
-		return (0);
-	ft_bzero(ptr, nmemb * size);
-	return (ptr);
+	if ((unsigned char *)src >= (unsigned char *)dest)
+	{
+		i = 0;
+		while (i < n)
+		{
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+			++i;
+		}
+	}
+	else
+	{
+		i = n;
+		while (i > 0)
+		{
+			--i;
+			((unsigned char *)dest)[i] = ((unsigned char *)src)[i];
+		}
+	}
+	return (dest);
 }

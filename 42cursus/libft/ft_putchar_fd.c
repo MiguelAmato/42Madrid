@@ -6,13 +6,14 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:21:13 by amato             #+#    #+#             */
-/*   Updated: 2023/09/13 16:14:39 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:46:37 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_putchar_fd(char c, int fd)
 {
 	write(fd, &c, 1);
+	return (1);
 }

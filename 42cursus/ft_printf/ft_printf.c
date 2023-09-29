@@ -6,24 +6,40 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 15:45:13 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/27 16:25:28 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:51:41 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
+#include "libftprintf.h"
 
-void	parse_argumments(char *format, va_list ap, const int i)
+static int	parse_arguments(const char *format, va_list ap, const int i)
 {
-	
+	if (format[i] == 'c')
+		ft_putchar_fd(va_arg(ap, int), 1);
+	else if (format[i] == 's')
+		ft_putstr_fd(va_arg(ap, char *), 1);
+	else if (format[i] == 'p')
+		print_memory_dir((intptr_t) va_arg(ap, char *));
+	else if (format[i] == 'd')
+		ft_putnbr_fd(va_arg(ap, long long int), 1);
+	else if (format[i] == 'i')
+		ft_putnbr_fd(va_arg(ap, long long int), 1);
+	else if (format[i] == 'u')
+		ft_putnbr_fd(va_arg(ap, long long int), 1);
+	//else if (format[i] == 'x')
+	//else if (format[i] == 'X')
+	else if (format[i] == '%')
+		ft_putchar_fd('%', 1);
 }
 
 int	ft_printf(char const *format, ...)
 {
 	int		i;
+	int		count;
 	va_list	ap;
 
 	i = 0;
+	count = 0;
 	va_start(ap, format);
 	while (format[i])
 	{
@@ -32,11 +48,12 @@ int	ft_printf(char const *format, ...)
 			++i;
 			if (!format[i])
 				return (0); // No se que tiene que hacer esto la verdad
-			parse_arguments(format, ap, i);
+			count += parse_arguments(format, ap, i);
 		}
 		else
-			ft_putchar_fd(format[i], 1);
+			count += ft_putchar_fd(format[i], 1);
 		++i;
 	}
 	va_end(ap);
+	return (count);
 }

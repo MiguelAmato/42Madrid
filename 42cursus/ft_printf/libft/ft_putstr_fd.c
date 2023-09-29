@@ -6,13 +6,13 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:23:01 by amato             #+#    #+#             */
-/*   Updated: 2023/09/13 16:28:08 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:23:28 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_putstr_fd(char *s, int fd)
 {
 	int	i;
 
@@ -22,4 +22,5 @@ void	ft_putstr_fd(char *s, int fd)
 		ft_putchar_fd(s[i], fd);
 		++i;
 	}
+	return (i);
 }

@@ -1,19 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 10:21:13 by amato             #+#    #+#             */
-/*   Updated: 2023/09/29 17:23:07 by mamato-h         ###   ########.fr       */
+/*   Created: 2023/09/27 19:44:44 by mamato-h          #+#    #+#             */
+/*   Updated: 2023/09/27 20:15:51 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
 
-int	ft_putchar_fd(char c, int fd)
+void	print_memory_dir(intptr_t addr)
 {
-	write(fd, &c, 1);
-	return (1);
+	char	aux[MAX];
+	int		cont;
+
+	cont = MAX - 1;
+	while (cont >= 0 && addr >= MAX)
+	{
+		aux[cont] = (char)g_hex[addr % MAX];
+		addr /= MAX;
+		--cont;
+	}
+	while (cont >= 0)
+	{
+		aux[cont] = '0';
+		--cont;
+	}
+	cont = 0;
+	while (cont < MAX)
+	{
+		write(1, &aux[cont], 1);
+		++cont;
+	}
 }

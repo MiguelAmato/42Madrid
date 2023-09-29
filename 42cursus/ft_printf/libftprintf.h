@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/12 10:21:13 by amato             #+#    #+#             */
-/*   Updated: 2023/09/29 17:23:07 by mamato-h         ###   ########.fr       */
+/*   Created: 2023/09/27 19:40:54 by mamato-h          #+#    #+#             */
+/*   Updated: 2023/09/27 19:47:57 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFTPRINT_H
+# define LIBFTPRINT_H
+# include "libft/libft.h"
+# include <stdarg.h>
+# include <stdint.h>
 
-int	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-	return (1);
-}
+# define MAX 16
+
+const static char	g_hex[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+		'a', 'b', 'c', 'd', 'e', 'f'};
+
+int					ft_printf(char const *format, ...);
+
+void				print_memory_dir(intptr_t addr);
+
+#endif

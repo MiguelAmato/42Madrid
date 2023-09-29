@@ -6,13 +6,13 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:44:44 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/09/27 20:15:51 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/09/29 17:54:53 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	print_memory_dir(intptr_t addr)
+int	print_memory_dir(intptr_t addr)
 {
 	char	aux[MAX];
 	int		cont;
@@ -35,4 +35,5 @@ void	print_memory_dir(intptr_t addr)
 		write(1, &aux[cont], 1);
 		++cont;
 	}
+	return (0);
 }

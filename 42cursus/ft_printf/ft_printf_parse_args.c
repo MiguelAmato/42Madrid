@@ -1,39 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printf_parse_args.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/27 15:45:13 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/10/01 20:38:06 by amato            ###   ########.fr       */
+/*   Created: 2023/10/01 20:24:42 by amato             #+#    #+#             */
+/*   Updated: 2023/10/01 21:00:27 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(char const *format, ...)
+int	ft_parse_strings(va_list ap)
 {
-	int		i;
-	int		count;
-	va_list	ap;
+	char	*str;
 
-	i = 0;
-	count = 0;
-	va_start(ap, format);
-	while (format[i])
-	{
-		if (format[i] == '%')
-		{
-			++i;
-			if (!format[i])
-				return (0);
-			count += parse_arguments_printf(format, ap, i);
-		}
-		else
-			count += ft_putchar_fd(format[i], 1);
-		++i;
-	}
-	va_end(ap);
-	return (count);
+	str = va_arg(ap, char *);
+	if (!str)
+		str = "(null)";
+	return (ft_putstr_fd(str, 1));
+}
+int	ft_parse_pointers(va_list ap)
+{
+	uintptr_t	aux;
+
+	aux = (uintptr_t) va_arg(ap, char *);
+	if (!aux)
+		return (ft_putstr_fd("(null)", 1));
+	return (print_memory_dir(aux));
 }

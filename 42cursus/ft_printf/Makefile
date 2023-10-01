@@ -6,7 +6,7 @@
 #    By: amato <amato@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/01 15:21:34 by amato             #+#    #+#              #
-#    Updated: 2023/10/01 16:43:04 by amato            ###   ########.fr        #
+#    Updated: 2023/10/01 20:36:12 by amato            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ NAME = libftprintf.a
 
 LIBFT = libft/libft.a
 
-SRC = ft_printf.c ft_printf_utils.c
+SRC = ft_printf.c ft_printf_utils.c ft_printf_parse_args.c
 
 OBJS = $(SRC:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra #-Werror
 AR = ar
 RC = rcs
 

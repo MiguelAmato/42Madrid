@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:44:44 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/10/01 16:18:51 by amato            ###   ########.fr       */
+/*   Updated: 2023/10/01 20:51:12 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	parse_arguments_printf(const char *format, va_list ap, const int i)
 	if (format[i] == 'c')
 		count += ft_putchar_fd(va_arg(ap, int), 1);
 	else if (format[i] == 's')
-		count += ft_putstr_fd(va_arg(ap, char *), 1);
+		count += ft_parse_strings(ap);
 	else if (format[i] == 'p')
-		count += print_memory_dir((uintptr_t)va_arg(ap, char *));
+		count += ft_parse_pointers(ap);
 	else if (format[i] == 'd')
 		count += ft_putnbr_fd(va_arg(ap, int), 1);
 	else if (format[i] == 'i')
@@ -30,15 +30,15 @@ int	parse_arguments_printf(const char *format, va_list ap, const int i)
 	else if (format[i] == 'u')
 		count += ft_putnbr_fd(va_arg(ap, unsigned int), 1);
 	else if (format[i] == 'x')
-		count += print_rec(va_arg(ap, long long int), 0);
+		count += print_rec(va_arg(ap, unsigned long long int), 0);
 	else if (format[i] == 'X')
-		count += print_rec(va_arg(ap, long long int), 1);
+		count += print_rec(va_arg(ap, unsigned long long int), 1);
 	else if (format[i] == '%')
 		count += ft_putchar_fd('%', 1);
 	return (count);
 }
 
-int	print_rec(uintptr_t n, const int cap)
+int	print_rec(unsigned long long n, const int cap)
 {
 	int	count;
 
@@ -53,7 +53,7 @@ int	print_rec(uintptr_t n, const int cap)
 	return (count);
 }
 
-int	print_memory_dir(long long n)
+int	print_memory_dir(uintptr_t n)
 {
 	ft_putstr_fd("0x", 1);
 	return (print_rec(n, 0) + 2);

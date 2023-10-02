@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:44:44 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/10/01 20:51:12 by amato            ###   ########.fr       */
+/*   Updated: 2023/10/02 11:20:17 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ int	parse_arguments_printf(const char *format, va_list ap, const int i)
 	else if (format[i] == 'u')
 		count += ft_putnbr_fd(va_arg(ap, unsigned int), 1);
 	else if (format[i] == 'x')
-		count += print_rec(va_arg(ap, unsigned long long int), 0);
+		count += ft_parse_hex(ap, 0);
 	else if (format[i] == 'X')
-		count += print_rec(va_arg(ap, unsigned long long int), 1);
+		count += ft_parse_hex(ap, 1);
 	else if (format[i] == '%')
 		count += ft_putchar_fd('%', 1);
 	return (count);

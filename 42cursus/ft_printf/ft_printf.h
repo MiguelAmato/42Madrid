@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:40:54 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/10/01 20:44:57 by amato            ###   ########.fr       */
+/*   Updated: 2023/10/02 11:19:48 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,5 +33,7 @@ int	print_memory_dir(uintptr_t n);
 int	ft_parse_strings(va_list ap);
 
 int	ft_parse_pointers(va_list ap);
+
+int	ft_parse_hex(va_list ap, int cap);
 
 #endif

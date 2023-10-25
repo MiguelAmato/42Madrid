@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 19:40:54 by mamato-h          #+#    #+#             */
-/*   Updated: 2023/10/02 11:19:48 by amato            ###   ########.fr       */
+/*   Updated: 2023/10/25 15:37:16 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,11 @@
 
 # define MAX 16
 
-static const char	g_hex[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
-	'a', 'b', 'c', 'd', 'e', 'f'};
-
 int	ft_printf(char const *format, ...);
 
 int	parse_arguments_printf(const char *format, va_list ap, const int i);
 
-int	print_rec(unsigned long long int n, const int cap);
+int	print_rec(unsigned long long n, const int cap, char g_hex[]);
 
 int	print_memory_dir(uintptr_t n);
 

@@ -6,7 +6,7 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 10:21:13 by amato             #+#    #+#             */
-/*   Updated: 2023/09/29 17:46:37 by mamato-h         ###   ########.fr       */
+/*   Updated: 2023/10/07 19:35:09 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,5 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	write(fd, &c, 1);
-	return (1);
+	return (write(fd, &c, 1));
 }

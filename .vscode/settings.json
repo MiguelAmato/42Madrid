@@ -3,6 +3,7 @@
 		"libft.h": "c",
 		"random": "c",
 		"unistd.h": "c",
-		"stdio.h": "c"
+		"stdio.h": "c",
+		"algorithm": "c"
 	}
 }

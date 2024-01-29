@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:28:13 by amato             #+#    #+#             */
-/*   Updated: 2024/01/29 22:11:56 by amato            ###   ########.fr       */
+/*   Updated: 2024/01/29 23:01:27 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,21 @@ char	*ft_strdup(char *s, int *i)
 {
 	char		*dup;
 	size_t		size;
+	int			j;
 
 	size = ft_strlen(s + (*i));
 	dup = malloc(sizeof(char) * (size + 1));
 	if (dup == 0)
 		return (0);
+	j = 0;
 	while (s[*i] != '\n' && s[*i] != '\0')
 	{
-		dup[*i] = s[*i];
+		dup[j] = s[*i];
 		s[*i] = '\n';
 		++(*i);
+		++j;
 	}
-	dup[*i] = '\0';
+	dup[j] = '\0';
 	return (dup);
 }
 
@@ -71,22 +74,34 @@ char	*get_next_line(int fd)
 	if (BUFFER_SIZE <= 0)
 		return (0);
 	i = 0;
-	while (buffer[i++] == '\n');
+	while (buffer[i] == '\n')
+		++i;
 	ret = ft_strdup(buffer, &i);
 	if (!ret)
 		return (0);
-	while (i == BUFFER_SIZE - 1) 
+	while (i == BUFFER_SIZE || buffer[0] != '\n') 
 	{
 		if (read(fd, buffer, BUFFER_SIZE) == -1)
 		{
 			free(ret);
 			return (0);
 		}
+		i = 0;
 		ret = ft_strjoin(ret, buffer, &i);
 	}	
 	return (ret);
 }
 
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <stdio.h>
 int main () {
+	int fd = open("prueba.txt", O_RDONLY);
+	char *ret = get_next_line(fd);
+	printf("%s\n", ret);
+	while (ret) {
+		ret = get_next_line(fd);
+		printf("%s\n", ret);
+	}
 	return 0;
 }

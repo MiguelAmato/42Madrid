@@ -12,6 +12,6 @@ BSQ: 50/100
 
 libft: 125/125
 
-ft_printf: Sin evaluar
+ft_printf: 100/125
 
 get_next_line: En proceso

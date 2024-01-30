@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:28:13 by amato             #+#    #+#             */
-/*   Updated: 2024/01/30 01:58:39 by amato            ###   ########.fr       */
+/*   Updated: 2024/01/30 02:46:18 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ char	*get_next_line(int fd)
 
 	if (BUFFER_SIZE <= 0 && fd < 0)
 		return (0);
+	nread = 0;
 	ret = ft_strdup(buffer, &i);
 	if (ret && buffer[i] != NL)
 	{
@@ -113,7 +114,7 @@ char	*get_next_line(int fd)
 	move_buffer(buffer);
 	return (ret);
 }
-
+/*
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -122,8 +123,9 @@ int main () {
 	char *ret = get_next_line(fd);
 	printf("%s\n", ret);
 	while (ret) {
-		ret = get_next_line(fd);
 		printf("%s\n", ret);
+		ret = get_next_line(fd);
 	}
 	return 0;
 }
+*/

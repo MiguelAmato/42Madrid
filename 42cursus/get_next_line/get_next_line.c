@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:28:13 by amato             #+#    #+#             */
-/*   Updated: 2024/01/31 13:37:55 by amato            ###   ########.fr       */
+/*   Updated: 2024/01/31 21:12:33 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,17 @@ void move_buffer(char *buffer)
 	i = 0;
 	while (buffer[i] != NL && buffer[i])
 		++i;
+	if (buffer[i] == NL)
+		++i;
 	start = 0;
-	while (start < i)
+	while (buffer[i])
 	{
 		buffer[start] = buffer[i];
 		buffer[i] = '\0';
 		++i;
 		++start;
 	}
-	//buffer[start] = '\0';
+	buffer[start] = '\0';
 }
 
 char *ft_check_leaks(int nread, char *ret, char *buffer)
@@ -139,6 +141,7 @@ char	*get_next_line(int fd)
 	return (ret);
 }
 
+/*
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -151,3 +154,4 @@ int main () {
 	}
 	return 0;
 }
+*/

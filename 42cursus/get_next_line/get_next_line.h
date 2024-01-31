@@ -6,7 +6,7 @@
 /*   By: amato <amato@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:28:09 by amato             #+#    #+#             */
-/*   Updated: 2024/01/30 02:25:02 by amato            ###   ########.fr       */
+/*   Updated: 2024/01/31 12:15:02 by amato            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ char	*get_next_line(int fd);
 #endif
 
 #ifndef BUFFER_SIZE
-# define BUFFER_SIZE 12
+# define BUFFER_SIZE 100
 #endif

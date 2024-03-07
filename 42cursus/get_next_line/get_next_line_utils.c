@@ -6,7 +6,7 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:28:11 by amato             #+#    #+#             */
-/*   Updated: 2024/02/20 18:45:18 by mamato-h         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:51:23 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
-	if (!s)
-		return (-1);
 	i = 0;
 	while (s[i] != '\0' && s[i] != NL)
 		++i;
@@ -34,9 +32,9 @@ char	*ft_strdup(char *s, int *i)
 
 	*i = 0;
 	dup = NULL;
-	size = ft_strlen(s);
-	if (size == -1)
+	if (!s)
 		return (0);
+	size = ft_strlen(s);
 	dup = malloc(sizeof(char) * (size + 1));
 	if (dup == 0)
 		return (0);

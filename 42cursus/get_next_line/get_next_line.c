@@ -6,7 +6,7 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 19:28:13 by amato             #+#    #+#             */
-/*   Updated: 2024/02/20 18:04:09 by mamato-h         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:27:50 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*get_next_line(int fd)
 {
-	static char	buffer[BUFFER_SIZE];
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*ret;
 	int			i;
 	int			nread;
 
-	if (BUFFER_SIZE <= 0 && fd < 0)
-		return (0);
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
 	nread = 0;
 	ret = ft_strdup(buffer, &i);
 	if (ret && buffer[i] != NL)
@@ -40,21 +40,21 @@ char	*get_next_line(int fd)
 	move_buffer(buffer);
 	return (ret);
 }
-
-
-// #include <fcntl.h>
-// #include <stdio.h>
-// #include <sys/stat.h>
-
-// int main () {
-// 	// int fd = open("prueba.txt", O_RDONLY);
-// 	// char *ret = get_next_line(fd);
-// 	// while (ret) {
-// 	// 	printf("%s", ret);
-// 	// 	ret = get_next_line(fd);
-// 	// }
-// 	int fd = open("prueba.txt", O_RDWR);
-// 	close(fd);
-// 	printf("%s\n", get_next_line(1000));
-// 	return (0);
-// }
+/*
+#include <fcntl.h>
+#include <stdio.h>
+#include <sys/stat.h>
+int main () {
+	// int fd = open("prueba.txt", O_RDONLY);
+	// char *ret = get_next_line(fd);
+	// while (ret) {
+	// 	printf("%s", ret);
+	// 	ret = get_next_line(fd);
+	// }
+	int fd = open("prueba.txt", O_RDONLY);
+	printf("%s\n", get_next_line(fd));
+	printf("%d\n", printf("%s\n", get_next_line(fd)));
+	close(fd);
+	return (0);
+}
+*/

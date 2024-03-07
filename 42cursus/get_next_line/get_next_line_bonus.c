@@ -6,11 +6,9 @@
 /*   By: mamato-h <mamato-h@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 12:08:55 by mamato-h          #+#    #+#             */
-/*   Updated: 2024/02/20 18:44:01 by mamato-h         ###   ########.fr       */
+/*   Updated: 2024/03/07 15:27:09 by mamato-h         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-// 1024
 
 #include "get_next_line_bonus.h"
 
@@ -21,8 +19,8 @@ char	*get_next_line(int fd)
 	int			i;
 	int			nread;
 
-	if (BUFFER_SIZE <= 0 && fd < 0)
-		return (0);
+	if (fd < 0 || fd > MAX_FD || BUFFER_SIZE <= 0)
+		return (NULL);
 	nread = 0;
 	ret = ft_strdup(buffer[fd], &i);
 	if (ret && buffer[fd][i] != NL)
